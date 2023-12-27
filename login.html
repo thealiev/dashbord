@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f2f5;
+      }
+
+      .login-container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+      }
+
+      .login-container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .login-container input[type="text"],
+      .login-container input[type="password"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .login-container input[type="submit"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        background-color: #f0c14b;
+        border: 1px solid #a88734;
+        border-radius: 5px;
+        color: #111;
+        cursor: pointer;
+      }
+
+      .login-container input[type="submit"]:hover {
+        background-color: #ddb347;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+      }
+
+      .create-account {
+        margin-top: 20px;
+      }
+
+      .create-account a {
+        text-decoration: none;
+        color: #0066c0;
+        font-weight: bold;
+      }
+
+      .create-account a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Sign-In</h1>
+      <form id="loginForm">
+        <input
+          type="text"
+          placeholder="Email or mobile phone number"
+          id="username"
+          required
+        />
+        <input type="password" placeholder="Password" id="password" required />
+        <input type="submit" value="Sign-In" />
+      </form>
+      <div class="error-message" id="errorMessage"></div>
+      <div class="create-account">
+        <p>New to User?</p>
+        <a href="#new-acc">Create your account</a>
+      </div>
+      <div href="#new-acc" class="create-account-fields" hidden>
+        <h2>Create Account</h2>
+        <form id="createAccountForm">
+          <input
+            type="text"
+            placeholder="Enter your name"
+            id="newUsername"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Enter your email"
+            id="newEmail"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Create password"
+            id="newPassword"
+            required
+          />
+          <input type="submit" value="Create Account" />
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const createAccountLink = document.getElementById("createAccountLink");
+      const createAccountFields = document.querySelector(
+        ".create-account-fields"
+      );
+
+      createAccountLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        createAccountFields.style.display = "block";
+      });
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          // Simulate incorrect login (Replace this with actual validation logic)
+          if (username !== "ali@gmail.com" || password !== "1234") {
+            document.getElementById("errorMessage").innerText =
+              "Incorrect username or password. Please try again.";
+          } else {
+            window.location.href = "index.html";
+          }
+        });
+
+      document
+        .getElementById("createAccountForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const newUsername = document.getElementById("newUsername").value;
+          const newEmail = document.getElementById("newEmail").value;
+          const newPassword = document.getElementById("newPassword").value;
+
+          // Simulate creating a new account (Replace this with your account creation logic)
+          console.log("New Account Created:");
+          console.log("Username:", newUsername);
+          console.log("Email:", newEmail);
+          console.log("Password:", newPassword);
+
+          // For demonstration, let's hide the create account fields after submission
+          createAccountFields.style.display = "none";
+        });
+    </script>
+  </body>
+</html>
